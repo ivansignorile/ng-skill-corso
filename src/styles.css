@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body{
+    background: #222;
+}
+
+#spinnerContainer{
+    height: 80vh;
+    padding-top: 30vh;
+}
+
+#spinnerContainer *{
+    margin: 0 auto;
+}

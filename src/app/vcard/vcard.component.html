@@ -1,0 +1,16 @@
+<h3>
+    {{data.user_name}}
+</h3>
+<p>
+    {{data.user_email}}
+</p>
+
+<h5>Informazioni bancarie</h5>
+<app-bankinfo [parametro]="data" ></app-bankinfo>
+
+
+<!-- <a [routerLink]="['/profile', data.user_email]" class="btn btn-primary" routerLinkActive="router-link-active" > Vai al profilo</a> -->
+
+<button (click)="openProfile()" mat-flat-button color="accent">
+    Vai al profilo
+</button>

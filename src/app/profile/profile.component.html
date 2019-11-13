@@ -1,0 +1,18 @@
+<div class="text-white col-12">
+<mat-tab-group class="w-100">
+        <mat-tab label="Anagrafica">
+
+                <app-anagrafica *ngIf="user" [user]="user"></app-anagrafica>
+
+              
+
+        </mat-tab>
+        <mat-tab label="Bancarie">  
+           
+            <app-bankinfo [parametro]="user"></app-bankinfo>
+            
+        </mat-tab>
+</mat-tab-group>
+</div>
+
+

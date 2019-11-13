@@ -1,0 +1,81 @@
+<div class="row">
+
+<div class="col-6">
+  <div class="col-12">
+  <mat-form-field>
+      <input style="color:#fff;" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  </div>
+    
+  <div class="col-12">
+
+    <div *ngIf="!fullUserList" class="col-12" id="spinnerContainer">
+        <mat-progress-spinner
+          [color]="color"
+          [mode]="mode"
+          [value]="value" class="col-6 offset-3 text-center">
+    </mat-progress-spinner>
+  </div>
+
+
+
+  <table mat-table *ngIf="fullUserList" [dataSource]="userList" class="mat-elevation-z8 w-100">
+
+      <ng-container matColumnDef="user_name">
+          <th mat-header-cell *matHeaderCellDef> Nome </th>
+          <td mat-cell *matCellDef="let element"> {{element.user_name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="user_email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.user_email}} </td>
+          </ng-container>
+    
+        <ng-container matColumnDef="companyName">
+            <th mat-header-cell *matHeaderCellDef> Azienda </th>
+            <td mat-cell *matCellDef="let element"> {{element.companyName}} </td>
+          </ng-container>
+
+        <ng-container matColumnDef="options">
+            <th mat-header-cell *matHeaderCellDef> Opzioni </th>
+            <td mat-cell *matCellDef="let element"> 
+                <a [routerLink]="['/profile', element.user_email]" routerLinkActive="router-link-active" >
+                    Profilo
+                </a>  
+
+             
+
+
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row (click)="openVcard(el)" *matRowDef="let el; columns: displayedColumns;"></tr>
+        
+
+  </table>
+  </div>
+</div>
+
+  <div class="col-6">
+    <form [formGroup]="userForm">
+        <mat-form-field class="col-12">
+          <input matInput placeholder="Nome" type="text" formControlName="user_name">
+        </mat-form-field>
+        <mat-form-field class="col-12">
+          <input matInput placeholder="Email" type="email" formControlName="user_email">
+        </mat-form-field>
+        <mat-form-field class="col-12">
+          <input matInput placeholder="Company" type="text" formControlName="companyName">
+        </mat-form-field>
+
+        <button mat-flat-button color="warn" class="col-12" type="submit" (click)="submitForm()" [disabled]="!userForm.valid">Invia</button>
+        <small class="bg-warning" *ngIf="!userForm.valid">Attenzione form non valido</small>
+
+
+    </form>
+  </div>
+
+
+</div>
+
